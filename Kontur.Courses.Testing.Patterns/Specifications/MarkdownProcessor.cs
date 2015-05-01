@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace Kontur.Courses.Testing.Patterns.Specifications
 {
@@ -19,6 +20,8 @@ namespace Kontur.Courses.Testing.Patterns.Specifications
                             "<em>" + match.Groups[2].Value + "</em>" +
                             match.Groups[3].Value);
             input = input.Replace(@"\_", "_");
+//		    var m = Regex.Match(input, @"<\\?(em|strong)>");
+//            Console.WriteLine(m.Value);
             return input;
 		}
 	}
@@ -40,7 +43,20 @@ namespace Kontur.Courses.Testing.Patterns.Specifications
 	    [Test]
         public void Output_is_HTML()
 	    {
-	        
+            MarkdownProcessor m = new MarkdownProcessor();
+            var result = m.Render("_reb  __12314124__ oot_");
+            Assert.That(isValidHTML(result), Is.True);
+	    }
+
+	    bool isValidHTML(string input)
+	    {
+            var open_tags = Regex.Matches(input, @"<\s*([^ >]+)[^>]*>.*?<\s*/\s*\1\s*>");
+//	        foreach (Match m in open_tags)
+//	        {
+//	            Console.WriteLine(m.Groups[0].Value);    
+//	        }
+           
+	        return open_tags.Count > 0;
 	    }
 
         [Test]
