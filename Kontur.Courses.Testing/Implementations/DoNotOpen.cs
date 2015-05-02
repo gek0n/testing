@@ -22,7 +22,6 @@ namespace Kontur.Courses.Testing.Implementations
 				.OrderByDescending(t => t.Item1).ThenBy(t => t.Item2);
 		}
 	}
-
 	public class WordsStatistics2 : IWordsStatistics
 	{
 		private static IDictionary<string, int> stats = new Dictionary<string, int>();
@@ -47,7 +46,6 @@ namespace Kontur.Courses.Testing.Implementations
                 .Select(kv => Tuple.Create(kv.Value, kv.Key));
 		}
 	}
-
 	public class WordsStatistics3 : IWordsStatistics
 	{
 		private IDictionary<string, int> stats = new Dictionary<string, int>();
@@ -62,10 +60,11 @@ namespace Kontur.Courses.Testing.Implementations
 
 		public IEnumerable<Tuple<int, string>> GetStatistics()
 		{
-			return stats.OrderByDescending(kv => kv.Value).ThenBy(kv => kv.Key).Select(kv => Tuple.Create(kv.Value, kv.Key));
+			return stats.OrderByDescending(kv => kv.Value)
+                .ThenBy(kv => kv.Key)
+                .Select(kv => Tuple.Create(kv.Value, kv.Key));
 		}
 	}
-
 	public class WordsStatistics4 : IWordsStatistics
 	{
 		private IDictionary<string, int> stats = new Dictionary<string, int>();
@@ -82,7 +81,6 @@ namespace Kontur.Courses.Testing.Implementations
 			return stats.OrderByDescending(kv => kv.Value).ThenBy(kv => kv.Key).Select(kv => Tuple.Create(kv.Value, kv.Key));
 		}
 	}
-
 	public class WordsStatistics5 : IWordsStatistics
 	{
 		private IDictionary<string, int> stats = new Dictionary<string, int>();
@@ -138,7 +136,6 @@ namespace Kontur.Courses.Testing.Implementations
 			return stats.OrderByDescending(kv => kv.Key).ThenBy(kv => kv.Key).Select(kv => Tuple.Create(kv.Value, kv.Key));
 		}
 	}
-
 	public class WordsStatistics8 : IWordsStatistics
 	{
 		private int[] stats = new int[12347];
@@ -161,7 +158,6 @@ namespace Kontur.Courses.Testing.Implementations
 				.ThenBy(t => t.Item2);
 		}
 	}
-
 	public class WordsStatistics9 : IWordsStatistics
 	{
 		private List<Tuple<int, string>> stats = new List<Tuple<int, string>>();
@@ -185,7 +181,6 @@ namespace Kontur.Courses.Testing.Implementations
 			return stats;
 		}
 	}
-
 	public class WordsStatistics10 : IWordsStatistics
 	{
 		private List<string> words = new List<string>();
@@ -205,8 +200,6 @@ namespace Kontur.Courses.Testing.Implementations
 				.Select(g => Tuple.Create(g.Count(), g.Key));
 		}
 	}
-
-
 	public class WordsStatistics11 : IWordsStatistics
 	{
 		private IDictionary<string, int> stats = new Dictionary<string, int>();
@@ -230,7 +223,6 @@ namespace Kontur.Courses.Testing.Implementations
 			return stats.OrderByDescending(kv => kv.Value).Select(kv => Tuple.Create(kv.Value, kv.Key));
 		}
 	}
-
 	public class WordsStatistics12 : IWordsStatistics
 	{
 		private IDictionary<string, int> stats = new Dictionary<string, int>();
@@ -269,7 +261,6 @@ namespace Kontur.Courses.Testing.Implementations
 			return stats.OrderByDescending(t => t.Item1).ThenBy(t => t.Item2);
 		}
 	}
-	
 	public class WordsStatistics14 : IWordsStatistics
 	{
 		private IDictionary<string, int> stats = new Dictionary<string, int>();
@@ -288,7 +279,6 @@ namespace Kontur.Courses.Testing.Implementations
 				.ThenBy(kv => kv.Key).Select(kv => Tuple.Create(kv.Value, kv.Key));
 		}
 	}
-
 	public class WordsStatistics15 : IWordsStatistics
 	{
 		private IDictionary<string, int> stats = new Dictionary<string, int>();
